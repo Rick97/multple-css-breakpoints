@@ -1,0 +1,328 @@
+/* Challenge
+
+   Make the navigation layout work
+   on both mobile and large screens.
+
+   Mobile-first, so mobile styles first,
+   then add the large screen styles
+   inside the existing media query
+
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+.section-title {
+    color: #87629A;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase; 
+    color: white;
+    font-weight: 900;
+    background-color: #A59678;
+    padding: .75em 2em;
+    border-radius: 100px;
+}
+
+.btn:hover,
+.btn:focus {
+    opacity: .75; 
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* added for nav-toggle positioning */
+    position: relative;
+}
+
+.background-div{
+    width: 100%;
+    background-color: lightgrey;
+}
+
+header {
+    background: #2E323F;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+}
+
+.nav__list{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav__item{
+    margin-bottom: 1em;
+}
+
+.nav__link{
+    text-decoration: none;
+    color: white;
+}
+
+.nav__link--button{
+    background-color: #A59678;
+    color: white;
+    padding: 0.5em;
+    font-weight: 600;
+    border-radius: 2em;
+}
+
+.nav-toggle {
+    cursor: pointer;
+    border: 0;
+    width: 3em;
+    height: 3em;
+    padding: 0em;
+    border-radius: 50%;
+    background: #072A2D;
+    color: white;
+    transition: opacity 250ms ease;
+    
+    position: absolute;
+    left: 0;
+}
+
+.nav-toggle:focus,
+.nav-toggle:hover {
+    opacity: .75;
+}
+
+.hamburger {
+    width: 50%;
+    position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    display: block;
+    margin: 0 auto;
+    height: 3px;
+    background: white;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    width: 100%;
+}
+
+.hamburger::before {
+    transform: translateY(-6px);
+}
+
+.hamburger::after {
+    transform: translateY(3px);
+}
+
+/* made changes here from video
+   to make it more accessible.
+   
+   Works the same :) */
+.nav {
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+}
+
+.nav--visible {
+    visibility: visible;
+    height: auto;
+    position: relative;
+} 
+
+
+.logo {
+    height: 30px;
+}
+
+
+.hero {
+    padding: 100px 0;
+    background-color: #3B4050;
+    color: #FFF;
+}
+
+.hero__text {
+    width: 100%;
+}
+
+.hero__img {
+    margin-top: 2em;
+}
+
+.hero h1{
+    font-size: 5rem;
+    margin: 0;
+}
+
+.hero p {
+    color: #6F737F;
+}
+
+.hero__text + .hero__text{
+    align-self: flex-end;
+}
+
+.content{
+    padding: 2em 0;
+}
+
+.row-element{
+    color: #6F737F;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.row-element h2{
+    color: #A59678;
+    font-size: 1.9rem;
+}
+
+.side-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-column{
+    margin: 0.5em;
+    padding: 1em;
+    background-color: #3B4050;
+    color: white;
+    text-align: center;
+}
+
+.footer{
+    background-color: #3B4050;
+    color: #6F737F;
+}
+
+.footer-title{
+    color: white;
+    padding: 1.3em 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.fixed-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer h3{
+    color: #A59678;
+}
+
+.links{
+    display: flex;
+}
+
+.link-column{
+    width: 100%;
+}
+
+.link-column + .link-column{
+    margin-left: 2em;
+}
+
+.links ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+@media (min-width: 700px){
+    .side-column{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1000px) {
+    .side-column{
+        flex-direction: column;
+    }
+    
+    .nav-toggle {
+        display: none;
+    }
+    
+    .nav {
+        visibility: visible;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        height: auto;
+        margin: 0;
+    }
+
+    .nav__list{
+        flex-direction: row;
+        margin: 0;
+    }
+
+    .nav__item{
+        margin: 0 0 0 1em;
+    }
+
+    .nav__item + .nav__item{
+        margin-left: 1em;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content-and-image{
+        width: 200%;
+        margin-right: 2em;
+    }
+    
+    .row-element + .row-element{
+        margin-left: 1em;
+    }
+
+    .hero__img {
+        width: 32%;
+        align-self: flex-start;
+        margin: 0;
+    }
+    .about{
+        margin-right: 3em;
+    }
+}
